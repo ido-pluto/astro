@@ -211,11 +211,12 @@ export default function astro({ settings, logging }: AstroPluginOptions): vite.P
 				this.addWatchFile(dep);
 			}
 
-			const astroMetadata: AstroPluginMetadata['astro'] = {
-				clientOnlyComponents: transformResult.clientOnlyComponents,
-				hydratedComponents: transformResult.hydratedComponents,
-				scripts: transformResult.scripts,
-			};
+				const astroMetadata: AstroPluginMetadata['astro'] = {
+					clientOnlyComponents: transformResult.clientOnlyComponents,
+					hydratedComponents: transformResult.hydratedComponents,
+					scripts: transformResult.scripts,
+					pageOptions: {},
+				};
 
 			return {
 				code: transformResult.code,
