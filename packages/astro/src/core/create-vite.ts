@@ -20,8 +20,12 @@ import astroScriptsPlugin from '../vite-plugin-scripts/index.js';
 import astroScriptsPageSSRPlugin from '../vite-plugin-scripts/page-ssr.js';
 import { createCustomViteLogger } from './errors/dev/index.js';
 import { resolveDependency } from './util.js';
-import { astroContentPlugin } from '../content/vite-plugin-content.js';
+import {
+	astroContentServerPlugin,
+	astroContentVirtualModPlugin,
+} from '../content/vite-plugin-content.js';
 import { astroDelayedAssetPlugin } from '../content/vite-plugin-delayed-assets.js';
+import { loadContentConfig } from '../content/utils.js';
 
 interface CreateViteOptions {
 	settings: AstroSettings;
@@ -87,6 +91,8 @@ export async function createVite(
 		},
 	});
 
+	const contentConfig = await loadContentConfig({ settings });
+
 	// Start with the Vite configuration that Astro core needs
 	const commonConfig: vite.InlineConfig = {
 		cacheDir: fileURLToPath(new URL('./node_modules/.vite/', settings.config.root)), // using local caches allows Astro to be used in monorepos, etc.
@@ -114,7 +120,8 @@ export async function createVite(
 			astroPostprocessVitePlugin({ settings }),
 			astroIntegrationsContainerPlugin({ settings, logging }),
 			astroScriptsPageSSRPlugin({ settings }),
-			astroContentPlugin({ settings, logging }),
+			astroContentVirtualModPlugin({ settings }),
+			astroContentServerPlugin({ settings, logging, contentConfig }),
 			astroDelayedAssetPlugin({ settings, mode }),
 		],
 		publicDir: fileURLToPath(settings.config.publicDir),
