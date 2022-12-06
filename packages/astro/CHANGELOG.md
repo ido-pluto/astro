@@ -1,5 +1,11 @@
 # astro
 
+## 1.6.14
+
+### Patch Changes
+
+- [#5545](https://github.com/withastro/astro/pull/5545) [`9082a850e`](https://github.com/withastro/astro/commit/9082a850eef4ab0187fc3bfdd5a377f0c7040070) Thanks [@bluwy](https://github.com/bluwy)! - Exclude astro from Vite optimization
+
 ## 1.6.13
 
 ### Patch Changes

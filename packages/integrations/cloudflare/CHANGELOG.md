@@ -1,5 +1,14 @@
 # @astrojs/cloudflare
 
+## 4.1.1
+
+### Patch Changes
+
+- [#5534](https://github.com/withastro/astro/pull/5534) [`fabd9124b`](https://github.com/withastro/astro/commit/fabd9124bd3e654e885054f30e9c0d01eabf0470) Thanks [@bluwy](https://github.com/bluwy)! - Update esbuild dependency
+
+- Updated dependencies [[`9082a850e`](https://github.com/withastro/astro/commit/9082a850eef4ab0187fc3bfdd5a377f0c7040070)]:
+  - astro@1.6.14
+
 ## 4.1.0
 
 ### Minor Changes
